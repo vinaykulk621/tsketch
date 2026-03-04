@@ -1,7 +1,13 @@
 package main
 
-import "fmt"
+import (
+	tea "github.com/charmbracelet/bubbletea"
+	"github.com/vinaykulk621/tsketch/internal/app"
+)
 
 func main() {
-	fmt.Println("tsketch...")
+	p := tea.NewProgram(app.New(), tea.WithAltScreen())
+	if _, err := p.Run(); err != nil {
+		panic(err)
+	}
 }
