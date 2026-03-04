@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	p := tea.NewProgram(app.New(), tea.WithAltScreen())
+	p := tea.NewProgram(app.New(), tea.WithAltScreen(), tea.WithMouseAllMotion())
 	if _, err := p.Run(); err != nil {
 		panic(err)
 	}
