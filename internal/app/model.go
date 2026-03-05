@@ -9,4 +9,8 @@ type Model struct {
 
 	// position of the cursor
 	cursorX, cursorY int
+
+	//terminal screen, where we will
+	//render things as user moves mouse
+	terminal [][]rune
 }
