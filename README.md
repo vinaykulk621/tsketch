@@ -2,17 +2,16 @@
 
 tsketch allows you to draw in yout terminal.
 
---- 
+---
+
 built using
 
 - (bubbletea)[https://github.com/charmbracelet/bubbletea]
 
-
-
-
 ### Features/Usage
 
-- `Shift+C` to clear the terminal
+- Log
+- `Shift+c`('C') to clear the terminal
 - Hold `shift` or `Ctrl` key to draw
 - Save the current drawing somewhere
 - Load a drawing from stored dir
