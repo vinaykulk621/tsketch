@@ -26,13 +26,27 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		m.cursorY = msg.Y
 
 		//updating the terminal grid
-		m.terminal[m.cursorY][m.cursorX] = '%'
+		if m.tMode == mode(insertMode) {
+			m.terminal[m.cursorY][m.cursorX] = '%'
+		}
 
 	case tea.KeyMsg:
 		switch msg.String() {
 		//exiting application
 		case "ctrl+c", "q":
+			if m.tMode == mode(insertMode) {
+				m.tMode = mode(normalMode)
+				return m, nil
+			}
 			return m, tea.Quit
+
+			//enable/disable Insert tMode
+		case "i", "I":
+			if m.tMode == mode(insertMode) {
+				m.tMode = mode(normalMode)
+			} else {
+				m.tMode = mode(insertMode)
+			}
 
 		//clear terminal
 		//"shift+c"

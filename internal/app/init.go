@@ -9,5 +9,5 @@ func (m Model) Init() tea.Cmd {
 
 // create new model obj
 func New() Model {
-	return Model{}
+	return Model{tMode: mode(normalMode)}
 }

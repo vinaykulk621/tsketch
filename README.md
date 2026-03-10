@@ -12,7 +12,8 @@ built using
 
 - Log
 - `Shift+c`('C') to clear the terminal
-- Hold `shift` or `Ctrl` key to draw
+- Introduce vimotions type of insert and normal modes
+- Show bottom bar for help keywords
 - Save the current drawing somewhere
 - Load a drawing from stored dir
 - Modal to see all the drawings

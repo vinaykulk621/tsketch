@@ -1,7 +1,6 @@
 package app
 
-// main model goes here
-
+// main model
 type Model struct {
 
 	//width and height of the terminal
@@ -13,4 +12,17 @@ type Model struct {
 	//terminal screen, where we will
 	//render things as user moves mouse
 	terminal [][]rune
+
+	//terminal modes,
+	//simial to vimotions
+	tMode mode
 }
+
+// similar to vimotions
+// if presses 'i' should start drawing
+type mode int
+
+const (
+	insertMode int = iota
+	normalMode
+)
