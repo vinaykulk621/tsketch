@@ -6,7 +6,7 @@ tsketch allows you to draw in yout terminal.
 
 built using
 
-- (https://github.com/charmbracelet/bubbletea)[bubbletea]
+- [bubbletea](https://github.com/charmbracelet/bubbletea)
 
 ### Features/Usage
 
