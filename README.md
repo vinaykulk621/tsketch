@@ -6,14 +6,14 @@ tsketch allows you to draw in yout terminal.
 
 built using
 
-- (bubbletea)[https://github.com/charmbracelet/bubbletea]
+- (https://github.com/charmbracelet/bubbletea)[bubbletea]
 
 ### Features/Usage
 
 - [x] Log
 - [x] `Shift+c`('C') to clear the terminal
 - [x] Introduce vimotions type of insert and normal modes
-- [] Keep writing tests
+- [ ] Keep writing tests
 - [] Show bottom bar for help keywords
 - [] Save the current drawing somewhere
 - [] Load a drawing from stored dir
