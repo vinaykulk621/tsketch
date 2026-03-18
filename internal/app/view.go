@@ -2,6 +2,8 @@ package app
 
 import (
 	"strings"
+
+	"github.com/charmbracelet/lipgloss"
 )
 
 // main view goes here
@@ -26,5 +28,15 @@ func (m Model) View() string {
 		b.WriteRune('\n')
 
 	}
-	return b.String()
+	return b.String() + "\n" + taskBar(m)
+}
+
+// taskBar
+func taskBar(m Model) string {
+	taskBarStyle := lipgloss.NewStyle().
+		Background(lipgloss.Color("67")).
+		Width(m.width). // TODO: investigate wierd border cut
+		Height(m.taskBarHeight).
+		Border(lipgloss.DoubleBorder())
+	return taskBarStyle.Render("This is sample taskbar")
 }

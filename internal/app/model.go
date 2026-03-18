@@ -4,7 +4,7 @@ package app
 type Model struct {
 
 	//width and height of the terminal
-	width, height int
+	width, height, taskBarHeight int
 
 	// position of the cursor
 	cursorX, cursorY int

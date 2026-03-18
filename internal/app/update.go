@@ -13,8 +13,13 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 	switch msg := msg.(type) {
 	case tea.WindowSizeMsg:
+		//when we introduce taskBar, our drawable pane gets pushed upwards (3 units, as defined as taskBarHeight var)
+		// which in turn makes the drawing experience worse,
+		// thus following formula
+		terminalCanvaSize := 2 * m.taskBarHeight
+
 		//setting window size
-		m.height = msg.Height
+		m.height = msg.Height - terminalCanvaSize
 		m.width = msg.Width
 
 		//initializing the terminal grid
@@ -25,8 +30,11 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		m.cursorX = msg.X
 		m.cursorY = msg.Y
 
-		//updating the terminal grid
-		if m.tMode == mode(insertMode) {
+		// updating the terminal grid
+		// we only need to check on y-axis as,
+		// taskBar gets in the way, which could break the coordinates
+		// system of our terminal canvas
+		if m.tMode == mode(insertMode) && m.cursorY < m.height {
 			m.terminal[m.cursorY][m.cursorX] = '%'
 		}
 
