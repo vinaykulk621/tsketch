@@ -26,3 +26,7 @@ const (
 	insertMode int = iota
 	normalMode
 )
+
+func (m mode) toString() string {
+	return [...]string{"-- INSERT --", "-- NORMAL --"}[m]
+}

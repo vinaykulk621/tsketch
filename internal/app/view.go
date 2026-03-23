@@ -33,10 +33,11 @@ func (m Model) View() string {
 
 // taskBar
 func taskBar(m Model) string {
-	taskBarStyle := lipgloss.NewStyle().
-		Background(lipgloss.Color("67")).
-		Width(m.width). // TODO: investigate wierd border cut
+	keys := []string{"ctrl+c/quit", "shift+c/clear", m.tMode.toString()}
+	return taskBarStyle.
+		AlignVertical(lipgloss.Center).
+		AlignHorizontal(lipgloss.Center).
+		Width(m.width).
 		Height(m.taskBarHeight).
-		Border(lipgloss.DoubleBorder())
-	return taskBarStyle.Render("This is sample taskbar")
+		Render(strings.Join(keys, "\t"))
 }

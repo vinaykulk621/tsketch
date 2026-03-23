@@ -14,7 +14,7 @@ built using
 - [x] `Shift+c`('C') to clear the terminal
 - [x] Introduce vimotions type of insert and normal modes
 - [ ] Keep writing tests
-- [ ] Show bottom bar for help keywords
+- [x] Show bottom bar for help keywords
 - [ ] Save the current drawing somewhere
 - [ ] Load a drawing from stored dir
 - [ ] Modal to see all the drawings
