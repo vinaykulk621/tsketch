@@ -2,6 +2,17 @@ package app
 
 // main model
 type Model struct {
+	//screen
+	screen screen
+
+	//canva
+	canva CanvaModel
+
+	//help screen model
+	help HelpModel
+}
+
+type CanvaModel struct {
 
 	//width and height of the terminal
 	width, height, taskBarHeight int
@@ -23,10 +34,22 @@ type Model struct {
 type mode int
 
 const (
-	insertMode int = iota
+	insertMode mode = iota
 	normalMode
 )
 
 func (m mode) toString() string {
 	return [...]string{"-- INSERT --", "-- NORMAL --"}[m]
+}
+
+// screens
+type screen int
+
+const (
+	canvaScreen screen = iota
+	helpScreen
+)
+
+type HelpModel struct {
+	width, height int
 }

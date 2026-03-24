@@ -11,6 +11,15 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	// log everything
 	logger.Log.Info("update message", "msg", msg)
 
+	if m.screen == canvaScreen {
+		return updateCanvaScreen(m, msg)
+	}
+	return updateHelpScreen(m, msg)
+
+}
+
+func (m CanvaModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
+
 	switch msg := msg.(type) {
 	case tea.WindowSizeMsg:
 		//when we introduce taskBar, our drawable pane gets pushed upwards (3 units, as defined as taskBarHeight var)
@@ -34,7 +43,7 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		// we only need to check on y-axis as,
 		// taskBar gets in the way, which could break the coordinates
 		// system of our terminal canvas
-		if m.tMode == mode(insertMode) && m.cursorY < m.height {
+		if m.tMode == insertMode && m.cursorY < m.height {
 			m.terminal[m.cursorY][m.cursorX] = '%'
 		}
 
@@ -42,18 +51,18 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		switch msg.String() {
 		//exiting application
 		case "ctrl+c", "q":
-			if m.tMode == mode(insertMode) {
-				m.tMode = mode(normalMode)
+			if m.tMode == insertMode {
+				m.tMode = normalMode
 				return m, nil
 			}
 			return m, tea.Quit
 
 			//enable/disable Insert tMode
 		case "i", "I":
-			if m.tMode == mode(insertMode) {
-				m.tMode = mode(normalMode)
+			if m.tMode == insertMode {
+				m.tMode = normalMode
 			} else {
-				m.tMode = mode(insertMode)
+				m.tMode = insertMode
 			}
 
 		//clear terminal
@@ -66,12 +75,25 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	return m, nil
 }
 
+// update canva func
+func updateCanvaScreen(m Model, msg tea.Msg) (tea.Model, tea.Cmd) {
+	return m.canva.Update(msg)
+}
+
 // initialize/clear terminal window
-func terminalWindow(m Model) Model {
+func terminalWindow(m CanvaModel) CanvaModel {
 	m.terminal = nil
 	m.terminal = make([][]rune, m.height)
 	for i := range m.terminal {
 		m.terminal[i] = make([]rune, m.width)
 	}
 	return m
+}
+
+func (m HelpModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
+	return m, nil
+}
+
+func updateHelpScreen(m Model, msg tea.Msg) (tea.Model, tea.Cmd) {
+	return m.help.Update(msg)
 }
