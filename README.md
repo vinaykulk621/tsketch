@@ -1,6 +1,34 @@
 # tsketch
 
-tsketch allows you to draw in yout terminal.
+tsketch allows you to draw in your terminal.
+
+![tsketch](tsketch.png)
+
+## Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/vinaykulk621/tsketch.git
+
+# Navigate to the project directory
+cd tsketch
+
+# Build the application
+go build -o tsketch
+
+# Optionally install to /usr/bin to access from anywhere
+sudo mv tsketch /usr/bin/
+
+# Run the application
+./tsketch
+```
+
+## Usage
+
+- Use `i` to enter insert mode (drawing mode)
+- Move your mouse to draw on the canvas
+- Use `ctrl+c` or `q` to exit insert mode or quit the application
+- Use `shift+c` to clear the canvas
 
 ---
 
@@ -8,16 +36,3 @@ built using
 
 - [bubbletea](https://github.com/charmbracelet/bubbletea)
 
-### Features/Usage
-
-- [x] Log
-- [x] `Shift+c`('C') to clear the terminal
-- [x] Introduce vimotions type of insert and normal modes
-- [ ] Keep writing tests
-- [x] Show bottom bar for help keywords
-- [ ] Save the current drawing somewhere
-- [ ] Load a drawing from stored dir
-- [ ] Modal to see all the drawings
-- [ ] Create an executable for all distros
-- [ ] Write shell script to auto install this application, similar to claude code and others
-- [ ] Pick your own brush. In our case pick your own ascii/non-ascii charecter to paint.
