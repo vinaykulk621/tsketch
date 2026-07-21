@@ -32,7 +32,5 @@ sudo mv tsketch /usr/bin/
 
 ---
 
-built using
-
-- [bubbletea](https://github.com/charmbracelet/bubbletea)
+built using [bubbletea](https://github.com/charmbracelet/bubbletea)
 
